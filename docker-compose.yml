@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  nba-client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: client-dc
+    ports:
+      - 3000:3000
+    volumes:
+      - './client:/usr/app'
+      - '/usr/app/node_modules'
+  nba-server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: server-dc
+    ports:
+      - 5000:5000
+    volumes:
+      - './server:/usr/app'
+      - '/usr/app/node_modules'
